@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <h3>
+            Edit task: 
+            {% for task in tasks %}
+                {% if task.id == task_id %}
+                    {{ task.text }}
+                {% endif %}
+            {% endfor %}
+        </h3>
+        <div class="jumbotron">
+            <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <p>{{ form.task(placeholder='Enter task to change it', size=60) }}</p>
+            <p>{{ form.submit(placeholder='Edit') }}</p>
+        </form>
+        </div>
+    </div>
+
+{% endblock %}

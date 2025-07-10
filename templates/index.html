@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <div class="container mt-5">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <p>{{ form.task(size=70) }}</p>
+            <p>{{ form.submit }}</p>
+        </form>
+
+        <div class="jumbotron">
+            {% if tasks %}
+            <ul>
+
+                {% for task in tasks %}
+                <li>
+                    {% if task.done %}
+                        <h4 style="text-decoration: line-through;">{{ task.text }}</h4>
+                    {% else %}
+                        <h4>{{ task.text }}</h4>
+                        <a class="btn btn-success" href="{{ url_for('mark_done', task_id=task.id) }}">Done</a>
+                        <a class="btn btn-warning" href="{{ url_for('edit_task', task_id=task.id) }}">Edit</a>
+                    {% endif %}
+                    <a class="btn btn-danger" href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a>
+                </li>
+                <br>
+                {% endfor %}
+
+            </ul>
+
+            {% else %}
+                <p class='lead text-muted'>There are no tasks yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block navbar %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: relative;">
+        <h2 style="color: white;">To Do List</h2>
+        <a class="btn btn-warning" style="position: absolute; top: 15px; right: 15px;" href="{{ url_for('delete_cookie') }}">Clear all tasks</a>
+    </nav>
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}
